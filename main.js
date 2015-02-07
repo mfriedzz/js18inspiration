@@ -65,6 +65,8 @@ Quotes.prototype._starClick = function(e) {
   
 };
 
+
+
 /**
  * Library of Quotes
  * @param {string} authorName Who created this quote library?
@@ -108,18 +110,29 @@ Quotelibrary.prototype.render = function() {
       // store it in the mapped array
       //console.log("got here2", quotes );
       return arg.render();
-    })
-  );
+    }) //this.quotes fcn end
+   ); // empty append end
+  	return this.$el;
+ };
 
-  return this.$el;
 
-  Quotelibrary.prototype.sort = function(){
-  		quotes.map(function () {
-  			console.log(quotes.sort());
-  			return quotes.sort();
-  })};
+  Quotelibrary.prototype.sort = function(arg){
+  		//quotes.map(function () {
+  		//	console.log(quotes.sort());
+  		var stars =[];
+  		for (i=0;i<arg.length; i++){
+
+  				var stars =  this.quotes.rating;
+  			} //stars
+  			console.log(stars);
+  			console.log(arg);
+  			return arg.sort();
+  		};
+  //})}; //End Quotelibrary sort
   		
-};  //end of Quotelibrary
+//};  //end of Quotelibrary
+
+
 
 // Creating Instances of Quotes and Authors
 
@@ -137,12 +150,7 @@ var TR = new Quotes(" Speak Softly, and Carry A Big Stick", "Teddy Roosevelt");
 
 var gdrQuoteLibrary = new Quotelibrary("Georges\ Quote Library");
 gdrQuoteLibrary.addQuotes(GW, TR);
- 
-
  	//mdfQuoteLibrary.sort();
-
-
-
 // Main Body Calling Functions
 
 
@@ -182,9 +190,22 @@ var form1 = $("#form1")
      		console.log(quoteVal, authorVal);
      		var newQuote = new Quotes(quoteVal, authorVal);
      		$('.quotelibraries').append(newQuote.render());
+
+		   // $('.rating').on('focusin', function(){
+		   // 			console.log("got here222");
+		   // 	});
+
+		// $('.rating').children("li").text("here");
+			$('.rating').text("here");
+
  		}); //end of submit button 
 
-  
+  $('.rating').on('click', function(){
+		 		mdfQuoteLibrary.sort();	
+		 	//console.log(mdfQuoteLibrary);
+		 	//	gdrQuoteLibrary.sort();
+		 	//	newQuote.sort();
+		  	});
 
 
 
